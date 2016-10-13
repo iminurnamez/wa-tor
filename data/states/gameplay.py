@@ -12,7 +12,7 @@ class Slider(object):
         self.rect.midtop = midtop
         self.values = values
         self.slider_tab_img = prepare.GFX["slider_tab"]
-        self.slider_tab = self.slider_tab_img.get_rect(center=self.rect.center)
+        self.slider_tab = self.slider_tab_img.get_rect(center=(self.rect.centerx, self.rect.centery + 5))
         self.val_width = (self.rect.width - self.slider_tab.width) // float(len(self.values) - 1)
         self.grabbed = False
         self.left_edge = self.rect.left + self.slider_tab.width // 2
@@ -41,7 +41,7 @@ class Slider(object):
     def draw(self, surface):
         pg.draw.rect(surface, (18, 38, 53), self.rect)
         pg.draw.line(surface, pg.Color("gray60"),
-                           self.rect.midleft, self.rect.midright, 2)
+                           (self.rect.left, self.rect.centery + 5), (self.rect.right, self.rect.centery + 5), 2)
         surface.blit(self.slider_tab_img, self.slider_tab)
 
 
@@ -216,7 +216,7 @@ class Gameplay(tools._State):
             if i == 7:
                 left = 20
                 top += 16
-        Label("Fish Image", {"midtop": (self.icon_rect.centerx, 60)},
+        Label("Fish Image", {"midtop": (self.icon_rect.centerx, 68)},
                 self.labels)
         left = 20
         top = 90
