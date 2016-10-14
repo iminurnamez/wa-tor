@@ -1,4 +1,4 @@
-from random import sample, choice
+from random import sample, choice, randint
 
 import pygame as pg
 
@@ -101,16 +101,12 @@ class WatorWorld(object):
                         self.move_shark(cell, dest)
         
     def add_fish(self):
-        for indx in self.grid:
-            if self.grid[indx] is None:
-                self.grid[indx] = ["fish", 0]
-                break
-
+        indx = randint(0, self.num_columns - 1), randint(0, self.num_rows - 1)
+        self.grid[indx] = ["fish", 0]
+             
     def add_shark(self):
-        for indx in self.grid:
-            if self.grid[indx] is None:
-                self.grid[indx] = ["shark", 0, self.shark_starve_time]
-                break
+        indx = randint(0, self.num_columns - 1), randint(0, self.num_rows - 1)
+        self.grid[indx] = ["shark", 0, self.shark_starve_time]
                 
     def move_shark(self, cell, dest):
         self.grid[dest] = self.grid[cell]
