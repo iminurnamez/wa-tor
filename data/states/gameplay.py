@@ -249,10 +249,6 @@ class Gameplay(tools._State):
         elif event.type == pg.KEYUP:
             if event.key == pg.K_ESCAPE:
                 self.quit = True
-            elif event.key == pg.K_UP:
-                self.change_tick_length(-1)
-            elif event.key == pg.K_DOWN:
-                self.change_tick_length(1)
         self.icons.get_event(event)
         self.adjusters.get_event(event)
         self.speed_slider.get_event(event)
